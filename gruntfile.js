@@ -5,7 +5,7 @@ module.exports = function(grunt) {
       uglify: {
         my_target: {
           files: {
-            'build/output.min.js': ['JS/*.js']
+            'build/app.min.js': ['build/*.js']
           }
         }
       },
@@ -21,22 +21,22 @@ module.exports = function(grunt) {
         }
       },
       babel: {
-		options: {
-			sourceMap: true,
-			presets: ['env']
-		},
-		dist: {
-			files: {
-				'build/app.js': 'JS/*.js'
-			}
-		}
-	}
+        options: {
+          sourceMap: true,
+          presets: ['env']
+        },
+        dist: {
+          files: {
+            'build/uglify.js': ['JS/*.js']
+          }
+        }
+      }
     });
   
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-babel');
 
-    grunt.registerTask('default', ['uglify', 'cssmin', 'babel']);
+    grunt.registerTask('default', ['cssmin', 'babel', 'uglify']);
   
   };
